@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://bsbl43xux0yhg"]
+
+[ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_1m7hb"]
+[ext_resource type="PackedScene" uid="uid://jvyc26a4vdl8" path="res://scenes/component/health_component.tscn" id="2_3wmfu"]
+[ext_resource type="PackedScene" uid="uid://boj1lcjtqjic7" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_lif6h"]
+[ext_resource type="Texture2D" uid="uid://elbcb45qpjcd" path="res://scenes/game_object/player/player.png" id="2_r7tgc"]
+[ext_resource type="Script" path="res://scenes/game_object/player/Sprite2D.gd" id="3_rt00t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bvsus"]
+radius = 28.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w8axs"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yqb28"]
+radius = 5.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 0
+motion_mode = 1
+script = ExtResource("1_1m7hb")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_3wmfu")]
+
+[node name="AbilityManager" type="Node" parent="."]
+
+[node name="SwordAbilityController" parent="AbilityManager" instance=ExtResource("2_lif6h")]
+
+[node name="DamageIntervalTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
+
+[node name="PickupArea" type="Area2D" parent="."]
+position = Vector2(0, -5.405)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("CircleShape2D_bvsus")
+
+[node name="CollisionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_w8axs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_r7tgc")
+offset = Vector2(0, -8)
+script = ExtResource("3_rt00t")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_yqb28")
