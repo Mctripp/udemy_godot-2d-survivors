@@ -12,7 +12,13 @@ func _ready():
 
 
 func on_level_up(current_level: int):
-	var chosen_upgrade = upgrade_pool.pick_random() as AbilityUpgrade
+	print(upgrade_pool)
+	var available_upgrades := upgrade_pool.filter(func(upgrade: AbilityUpgrade) -> bool:
+		print(upgrade)
+		return upgrade.level < upgrade.max_level
+	)
+	print(available_upgrades)
+	var chosen_upgrade = available_upgrades.pick_random() as AbilityUpgrade
 	if chosen_upgrade == null:
 		return
 		
@@ -26,11 +32,13 @@ func apply_upgrade(upgrade: AbilityUpgrade):
 		
 	var has_upgrade = current_upgrades.has(upgrade.id)
 	if !has_upgrade:
+		upgrade.level = 1
 		current_upgrades[upgrade.id] = {
 			"resource": upgrade,
 			"quantity": 1
 		}
 	else:
+		upgrade.level += 1
 		current_upgrades[upgrade.id]["quantity"] += 1
 		print(current_upgrades)
 		

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://dqs41olnlmcqp"]
+
+[ext_resource type="Script" path="res://resources/upgrades/ability_upgrade.gd" id="1_ymegl"]
+
+[resource]
+script = ExtResource("1_ymegl")
+id = "sword_size"
+name = "Blade Size"
+max_level = 5
+level = 0
+description = "Increases the sword size by 20%"

@@ -11,11 +11,20 @@ layout_mode = 2
 
 [node name="NameLabel" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
+modulate = Color(0.695503, 0.695503, 0.695503, 1)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.647059, 0, 1)
 text = "test name"
 
 [node name="DescriptionLabel" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
+modulate = Color(0.485703, 0.485704, 0.485703, 1)
 layout_mode = 2
 text = "This is a really cool description hjahahahahja"
 autowrap_mode = 2
+
+[node name="MaxLevelLabel" type="Label" parent="VBoxContainer"]
+modulate = Color(0.674815, 0.674815, 0.674815, 1)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.737255, 0, 0, 1)
+text = "New or 1/5"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://c00celda37qn3"]
+
+[ext_resource type="Script" path="res://resources/upgrades/ability_upgrade.gd" id="1_rvafq"]
+
+[resource]
+script = ExtResource("1_rvafq")
+id = "axe_rate"
+name = "Throw Rate"
+max_level = 5
+level = 0
+description = "Increases the rate that axes are thrown by 10%"
