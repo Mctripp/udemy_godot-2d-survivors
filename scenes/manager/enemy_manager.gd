@@ -26,14 +26,14 @@ func get_spawn_position():
 	var spawn_position = Vector2.ZERO
 	var random_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 		
-	for i in 6:
+	for i in 12:
 		spawn_position = player.global_position + (random_direction * SPAWN_RADIUS)
 			
 		var query_parameters = PhysicsRayQueryParameters2D.create(player.global_position, spawn_position, 1)
 		var result = get_tree().root.world_2d.direct_space_state.intersect_ray(query_parameters)
 		if result.is_empty():
 			break
-		random_direction = random_direction.rotated(deg_to_rad(60))
+		random_direction = random_direction.rotated(deg_to_rad(30))
 	# for
 	return spawn_position
 

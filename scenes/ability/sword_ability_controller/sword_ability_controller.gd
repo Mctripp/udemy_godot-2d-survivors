@@ -7,7 +7,7 @@ const MAX_RANGE = 100
 var damage = 5
 var base_wait_time
 var size_scaling = 1
-var quantity = 1 # 1
+var quantity = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,6 +39,9 @@ func on_timer_timeout():
 		var foreground_layer = get_tree().get_first_node_in_group("foreground_layer")
 		foreground_layer.add_child(sword_instance)
 		sword_instance.hitbox_component.damage = damage
+		
+		if(enemies[i] == null):
+			continue
 		
 		sword_instance.global_position = enemies[i].global_position
 		sword_instance.global_position += Vector2.RIGHT.rotated(randf_range(0, TAU)) * 4

@@ -5,6 +5,7 @@ extends Node
 @export var upgrade_screen_scene: PackedScene
 
 var current_upgrades = {}
+var choices = 2 # Number of upgrades the player can select from during level up
 
 
 func _ready():
@@ -12,19 +13,22 @@ func _ready():
 
 
 func on_level_up(current_level: int):
-	print(upgrade_pool)
 	var available_upgrades := upgrade_pool.filter(func(upgrade: AbilityUpgrade) -> bool:
-		print(upgrade)
 		return upgrade.level < upgrade.max_level
 	)
-	print(available_upgrades)
-	var chosen_upgrade = available_upgrades.pick_random() as AbilityUpgrade
-	if chosen_upgrade == null:
-		return
-		
+
+	var chosen_upgrades = [] as Array[AbilityUpgrade]
+	for i in choices:
+		if available_upgrades.size() == 0:
+			break
+		var chosen_upgrade = available_upgrades.pick_random() as AbilityUpgrade
+		if chosen_upgrade == null:
+			break
+		chosen_upgrades.append(chosen_upgrade)
+		available_upgrades = available_upgrades.filter(func (upgrade): return upgrade.id != chosen_upgrade.id)
 	var upgrade_screen_instance = upgrade_screen_scene.instantiate()
 	add_child(upgrade_screen_instance)
-	upgrade_screen_instance.set_ability_upgrades([chosen_upgrade] as Array[AbilityUpgrade])
+	upgrade_screen_instance.set_ability_upgrades(chosen_upgrades)
 	upgrade_screen_instance.upgrade_selected.connect(on_upgrade_selected)
 
 

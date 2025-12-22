@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://davdsr42rjw3b"]
+
+[ext_resource type="PackedScene" uid="uid://bpcdj8bccnrh6" path="res://scenes/ability/axe_ability_controller/axe_ability_controller.tscn" id="1_x6xtg"]
+[ext_resource type="Script" path="res://resources/upgrades/ability.gd" id="2_88ttf"]
+
+[resource]
+script = ExtResource("2_88ttf")
+ability_controller_scene = ExtResource("1_x6xtg")
+id = "axe"
+name = "Axe"
+max_level = 1
+level = 0
+description = "Periodically releases a rotating axe around the player"

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_rvafq")
 id = "axe_rate"
-name = "Throw Rate"
+name = "Axe Throw Rate"
 max_level = 5
 level = 0
 description = "Increases the rate that axes are thrown by 10%"

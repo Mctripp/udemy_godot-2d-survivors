@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ba8gp8pcuar7k"]
+[gd_scene load_steps=8 format=3 uid="uid://ba8gp8pcuar7k"]
 
 [ext_resource type="Script" path="res://scenes/ability/sword_ability/sword_ability.gd" id="1_8qwo8"]
 [ext_resource type="Texture2D" uid="uid://2n2gwtp7v14o" path="res://scenes/ability/sword_ability/sword.png" id="1_ej38p"]
@@ -6,6 +6,7 @@
 
 [sub_resource type="Animation" id="Animation_ngcur"]
 length = 0.75
+loop_mode = 1
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -52,7 +53,7 @@ tracks/3/path = NodePath("HitboxComponent/CollisionShape2D3:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.525),
+"times": PackedFloat32Array(0, 0.2, 0.65),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -60,26 +61,38 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("HitboxComponent/CollisionShape2D4:disabled")
+tracks/4/path = NodePath("Sprite2D:offset")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.475, 0.5875),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Sprite2D:offset")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0.1, 0.15, 0.2, 0.25, 0.6, 0.65),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 0.0301855, 1),
 "update": 0,
 "values": [Vector2(2, -8), Vector2(5, -8), Vector2(2, -8), Vector2(0, -8), Vector2(-3, -8), Vector2(-10, -8)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HitboxComponent/CollisionShape2D3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(11, 6), Vector2(-6, 8), Vector2(-2, 11), Vector2(2, 12), Vector2(9, 11), Vector2(14, 3), Vector2(13, -8), Vector2(3, -16), Vector2(-9, -6)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HitboxComponent/CollisionShape2D3:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0542923, 0.422531, 0.430326, 0.217169, -0.0708144, -0.533585, -1.11339, -1.84967, -2.68818, -3.74585]
 }
 
 [sub_resource type="Animation" id="Animation_ysnrc"]
@@ -138,18 +151,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false, true]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("HitboxComponent/CollisionShape2D4:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.425, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dms0e"]
 _data = {
@@ -158,10 +159,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gx717"]
-size = Vector2(22, 22)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rilmt"]
-size = Vector2(24, 27)
+size = Vector2(8.60122, 19.9846)
 
 [node name="SwordAbility" type="Node2D"]
 script = ExtResource("1_8qwo8")
@@ -173,19 +171,15 @@ libraries = {
 autoplay = "swing"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = 3.14159
+rotation = 0.344649
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("1_ej38p")
-offset = Vector2(2, -8)
+offset = Vector2(-4, -8)
 
 [node name="HitboxComponent" parent="." instance=ExtResource("2_ffl1d")]
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(11, 6)
+position = Vector2(3, 1.2)
+rotation = -1.49834
 shape = SubResource("RectangleShape2D_gx717")
-disabled = true
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(12, -13.5)
-shape = SubResource("RectangleShape2D_rilmt")
 disabled = true
